@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<script src="core.js"></script>
+<script src="enc-base64.js"></script>
+<script src="hmac.js"></script>
+<script src="sha256.js"></script>
+<script>
+	function getBase64Encode(rawStr){
+		var wordArray = CryptoJS.enc.Utf8.parse(rawStr);
+		var result = CryptoJS.enc.Base64.stringify(wordArray);
+		return result;
+	}
+	function doEncode(){
+		var txtEncode = document.getElementById("txtEncode");
+		var resultEncode = document.getElementById("resultEncode");
+		resultEncode.innerText = getBase64Encode(txtEncode.value);
+	}
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>Enter Base64 Encode</td>
+			<td><input type="text" name="" value="" id="txtEncode" /></td>
+			<td><button onclick="doEncode()">Encode</button></td>
+		</tr>
+		<tr>
+			<td>Result:</td>
+			<td><span id="resultEncode" ></span></td>
+			<td></td>
+		</tr>
+	</table>
+</body>
+</html>
